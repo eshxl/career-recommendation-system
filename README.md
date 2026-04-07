@@ -1,16 +1,6 @@
 # Career Path Recommendation System for Engineering Students
 
-**Intelligent Decision-Making System using Knowledge Engineering**
-
----
-
-## 📚 Project Information
-
-- **Student Name:** Eshal Shanoj  
-- **Roll Number:** 22MIS0087  
-- **Course:** Knowledge Representation and Reasoning  
-- **Domain:** Education – Career Guidance  
-- **Project Type:** Individual Case Study  
+**Intelligent Decision-Making System using Knowledge Engineering** 
 
 ---
 
