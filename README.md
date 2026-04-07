@@ -392,9 +392,6 @@ This project demonstrates:
 ## 👨‍💻 Author
 
 **Eshal Shanoj**  
-Roll Number: 22MIS0087  
-VIT University  
-Email: [your-email@vitstudent.ac.in]
 
 ---
 
@@ -402,14 +399,6 @@ Email: [your-email@vitstudent.ac.in]
 
 This academic project is for educational purposes only.  
 Dataset used under MIT License (Om Baval, 2024).
-
----
-
-## 🙏 Acknowledgments
-
-- Om Baval for the comprehensive career prediction dataset
-- VIT Faculty for project guidance
-- Open-source community for knowledge engineering resources
 
 ---
 
