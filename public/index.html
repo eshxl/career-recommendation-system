@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Path Recommendation System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Professional Monochrome Color Scheme */
+            --primary: #2c3e50;
+            --primary-dark: #1a252f;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --accent-dark: #2980b9;
+            --bg-light: #ecf0f1;
+            --bg-white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-medium: #7f8c8d;
+            --text-light: #95a5a6;
+            --border-color: #bdc3c7;
+            --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-light);
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: var(--bg-white);
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 30px;
+            text-align: center;
+            border-top: 4px solid var(--accent);
+        }
+
+        .header h1 {
+            font-family: 'Inter', sans-serif;
+            color: var(--primary);
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            color: var(--text-medium);
+            font-size: 1em;
+            font-weight: 400;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 968px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+
+        .card {
+            background: var(--bg-white);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 24px;
+            font-size: 1.4em;
+            font-weight: 600;
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 0.95em;
+            transition: all 0.2s;
+            background: var(--bg-white);
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .slider-container input[type="range"] {
+            flex: 1;
+        }
+
+        .slider-value {
+            min-width: 40px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 1em;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            height: 6px;
+            border-radius: 3px;
+            background: var(--bg-light);
+            outline: none;
+            border: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--accent);
+            cursor: pointer;
+            border: none;
+            transition: transform 0.2s;
+        }
+
+        input[type="range"]::-moz-range-thumb:hover {
+            transform: scale(1.1);
+        }
+
+        h3 {
+            color: var(--secondary) !important;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.95em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dark);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .results-container {
+            display: none;
+        }
+
+        .results-container.active {
+            display: block;
+        }
+
+        .recommendation-card {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: white;
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+
+        .rank-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            font-weight: 700;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .recommendation-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            color: white !important;
+            font-weight: 600;
+        }
+
+        .confidence-bar {
+            background: rgba(255, 255, 255, 0.2);
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .confidence-fill {
+            height: 100%;
+            background: white;
+            transition: width 1s ease;
+        }
+
+        .factor-list {
+            margin: 15px 0;
+        }
+
+        .factor-item {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .factor-item::before {
+            content: '✓';
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .action-steps {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .action-steps h4 {
+            margin-bottom: 10px;
+            font-size: 1em;
+            font-weight: 600;
+        }
+
+        .action-steps ol {
+            margin-left: 20px;
+        }
+
+        .action-steps li {
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: var(--bg-white);
+            padding: 24px;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .stat-value {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--text-medium);
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            border: 3px solid var(--bg-light);
+            border-top: 3px solid var(--accent);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 6px;
+            box-shadow: var(--shadow-lg);
+            display: none;
+            z-index: 1000;
+            font-size: 0.9em;
+        }
+
+        .toast.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .info-section {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 15px;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .info-section h4 {
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        #welcomeMessage p {
+            color: var(--text-medium);
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--text-light);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-medium);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Career Path Recommendation System</h1>
+            <p>Intelligent Decision-Making using Knowledge Engineering</p>
+            <span class="badge">AI-Powered | FOL-Based | Explainable</span>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Input Form -->
+            <div class="card">
+                <h2>Student Profile</h2>
+                
+                <form id="studentForm">
+                    <!-- Academic Performance -->
+                    <h3 style="margin: 20px 0 15px 0;">Academic Performance</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cgpa">CGPA (0-10)</label>
+                            <input type="number" id="cgpa" min="0" max="10" step="0.1" value="7.5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="branch">Branch</label>
+                            <select id="branch" required>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Mechanical">Mechanical</option>
+                                <option value="Civil">Civil</option>
+                                <option value="Electrical">Electrical</option>
+                                <option value="Electronics">Electronics</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="projects">Projects Completed</label>
+                            <input type="number" id="projects" min="0" max="20" value="3" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="internships">Internships</label>
+                            <input type="number" id="internships" min="0" max="10" value="1" required>
+                        </div>
+                    </div>
+
+                    <!-- Skills -->
+                    <h3 style="margin: 20px 0 15px 0;">Skills (1-10)</h3>
+                    
+                    <div class="form-group">
+                        <label for="coding">Coding Skills</label>
+                        <div class="slider-container">
+                            <input type="range" id="coding" min="1" max="10" value="7">
+                            <span class="slider-value" id="codingValue">7</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="analytical">Analytical Skills</label>
+                        <div class="slider-container">
+                            <input type="range" id="analytical" min="1" max="10" value="7">
+                            <span class="slider-value" id="analyticalValue">7</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="communication">Communication Skills</label>
+                        <div class="slider-container">
+                            <input type="range" id="communication" min="1" max="10" value="7">
+                            <span class="slider-value" id="communicationValue">7</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="problemSolving">Problem Solving</label>
+                        <div class="slider-container">
+                            <input type="range" id="problemSolving" min="1" max="10" value="7">
+                            <span class="slider-value" id="problemSolvingValue">7</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="practical">Practical Skills</label>
+                        <div class="slider-container">
+                            <input type="range" id="practical" min="1" max="10" value="6">
+                            <span class="slider-value" id="practicalValue">6</span>
+                        </div>
+                    </div>
+
+                    <!-- Interests -->
+                    <h3 style="margin: 20px 0 15px 0;">Interests</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="interestCoding">Interest in Coding</label>
+                            <select id="interestCoding">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high" selected>High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="interestResearch">Interest in Research</label>
+                            <select id="interestResearch">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="interestManagement">Interest in Management</label>
+                            <select id="interestManagement">
+                                <option value="low" selected>Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="interestHandsOn">Interest in Hands-On Work</label>
+                            <select id="interestHandsOn">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Personality -->
+                    <h3 style="margin: 20px 0 15px 0;">Personality</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="risk">Risk Appetite</label>
+                            <select id="risk">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="leadership">Leadership (1-10)</label>
+                            <input type="number" id="leadership" min="1" max="10" value="6">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="patience">Patience Level</label>
+                            <select id="patience">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="workLife">Work-Life Balance Priority</label>
+                            <select id="workLife">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Constraints -->
+                    <h3 style="margin: 20px 0 15px 0;">Constraints</h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="financial">Financial Constraint</label>
+                            <select id="financial">
+                                <option value="low">Low</option>
+                                <option value="medium" selected>Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="familyPressure">Family Pressure for Job?</label>
+                            <select id="familyPressure">
+                                <option value="false" selected>No</option>
+                                <option value="true">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Get Recommendations
+                    </button>
+                </form>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="card">
+                <h2>Career Recommendations</h2>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing your profile using AI inference engine...</p>
+                </div>
+
+                <div id="welcomeMessage">
+                    <p style="text-align: center; padding: 40px 20px;">
+                        Fill in your profile details and click "Get Recommendations" to see personalized career path suggestions powered by our AI inference engine.
+                    </p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-value">10+</div>
+                            <div class="stat-label">Career Paths</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">FOL</div>
+                            <div class="stat-label">Logic-Based</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-label">Explainable</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-container" id="results"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Update slider values display
+        document.querySelectorAll('input[type="range"]').forEach(slider => {
+            const valueDisplay = document.getElementById(slider.id + 'Value');
+            slider.addEventListener('input', (e) => {
+                valueDisplay.textContent = e.target.value;
+            });
+        });
+
+        // Form submission
+        document.getElementById('studentForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Show loading
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('welcomeMessage').style.display = 'none';
+            document.getElementById('results').classList.remove('active');
+            
+            // Collect form data
+            const studentProfile = {
+                profile: {
+                    cgpa: parseFloat(document.getElementById('cgpa').value),
+                    branch: document.getElementById('branch').value,
+                    year: 4,
+                    age: 21
+                },
+                skills: {
+                    coding_skills: parseInt(document.getElementById('coding').value),
+                    analytical_skills: parseInt(document.getElementById('analytical').value),
+                    communication_skills: parseInt(document.getElementById('communication').value),
+                    problem_solving: parseInt(document.getElementById('problemSolving').value),
+                    practical_skills: parseInt(document.getElementById('practical').value)
+                },
+                interests: {
+                    coding: document.getElementById('interestCoding').value,
+                    research: document.getElementById('interestResearch').value,
+                    management: document.getElementById('interestManagement').value,
+                    hands_on_work: document.getElementById('interestHandsOn').value
+                },
+                personality: {
+                    risk_appetite: document.getElementById('risk').value,
+                    leadership: parseInt(document.getElementById('leadership').value),
+                    patience_level: document.getElementById('patience').value,
+                    work_life_balance_priority: document.getElementById('workLife').value
+                },
+                academic_achievements: {
+                    projects_completed: parseInt(document.getElementById('projects').value),
+                    publications: 0,
+                    internships: parseInt(document.getElementById('internships').value),
+                    certifications: []
+                },
+                constraints: {
+                    financial_constraint: document.getElementById('financial').value,
+                    family_pressure_immediate_job: document.getElementById('familyPressure').value === 'true',
+                    location_preference: 'flexible',
+                    salary_expectation: 'medium'
+                }
+            };
+
+            try {
+                // Call API
+                const response = await fetch('http://localhost:3000/api/recommend', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(studentProfile)
+                });
+
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayResults(data.result);
+                    showToast('Recommendations generated successfully!');
+                } else {
+                    showToast('Error: ' + data.message, 'error');
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                showToast('Failed to connect to server. Make sure the backend is running on port 3000.', 'error');
+            } finally {
+                document.getElementById('loading').classList.remove('active');
+            }
+        });
+
+        function displayResults(result) {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = '';
+            
+            if (!result.recommendations || result.recommendations.length === 0) {
+                resultsContainer.innerHTML = '<p style="text-align: center; padding: 40px;">No recommendations found.</p>';
+                resultsContainer.classList.add('active');
+                return;
+            }
+
+            result.recommendations.forEach((rec, index) => {
+                const card = document.createElement('div');
+                card.className = 'recommendation-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                
+                const confidencePercent = parseFloat(rec.confidencePercentage.replace('%', ''));
+                
+                card.innerHTML = `
+                    <div class="rank-badge">#${rec.rank}</div>
+                    <h3>${rec.name}</h3>
+                    <div style="display: flex; align-items: center; gap: 10px; margin: 10px 0;">
+                        <span style="font-size: 0.9em; opacity: 0.9;">${rec.category}</span>
+                        <span style="opacity: 0.7;">•</span>
+                        <span style="font-size: 0.9em; opacity: 0.9;">Priority: ${rec.priority}</span>
+                    </div>
+                    
+                    <div>
+                        <strong>Confidence Score: ${rec.confidencePercentage}</strong>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" style="width: ${confidencePercent}%"></div>
+                        </div>
+                    </div>
+
+                    <p style="margin: 15px 0; font-size: 0.95em; line-height: 1.6;">${rec.rationale}</p>
+
+                    ${rec.explanation && rec.explanation.primaryFactors && rec.explanation.primaryFactors.length > 0 ? `
+                        <div class="factor-list">
+                            <strong style="display: block; margin-bottom: 8px;">✓ Why This Path:</strong>
+                            ${rec.explanation.primaryFactors.slice(0, 3).map(factor => 
+                                `<div class="factor-item">${factor}</div>`
+                            ).join('')}
+                        </div>
+                    ` : ''}
+
+                    ${rec.actionSteps && rec.actionSteps.length > 0 ? `
+                        <div class="action-steps">
+                            <h4>Next Steps:</h4>
+                            <ol>
+                                ${rec.actionSteps.slice(0, 4).map(step => `<li>${step}</li>`).join('')}
+                            </ol>
+                        </div>
+                    ` : ''}
+
+                    <div class="info-section">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.9em;">
+                            <div><strong>Salary:</strong> ${rec.expectedSalary}</div>
+                            <div><strong>Work-Life:</strong> ${rec.workLifeBalance}</div>
+                        </div>
+                    </div>
+                `;
+                
+                resultsContainer.appendChild(card);
+            });
+
+            resultsContainer.classList.add('active');
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.background = type === 'error' ? '#e74c3c' : 'var(--primary)';
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+{
+  "metadata": {
+    "system": "Career Path Recommendation System",
+    "version": "1.0.0",
+    "algorithm": "Forward Chaining with Confidence Scoring",
+    "dataset": "roo_data.csv (Om Baval, 2024)",
+    "timestamp": "2026-04-02T10:02:19.276Z"
+  },
+  "student": {
+    "profile": {
+      "cgpa": 8.5,
+      "branch": "Computer Science",
+      "age": 21,
+      "year": 4
+    },
+    "skills": {
+      "coding": 9,
+      "analytical": 8,
+      "communication": 7,
+      "problemSolving": 9,
+      "practical": 6
+    },
+    "interests": {
+      "coding": "high",
+      "research": "high",
+      "management": "low",
+      "hands_on_work": "medium"
+    },
+    "personality": {
+      "risk_appetite": "medium",
+      "leadership": 7,
+      "patience_level": "high",
+      "work_life_balance_priority": "medium"
+    },
+    "achievements": {
+      "projects": 5,
+      "publications": 1,
+      "internships": 2,
+      "certifications": 3
+    },
+    "constraints": {
+      "financial_constraint": "low",
+      "family_pressure_immediate_job": false,
+      "location_preference": "flexible",
+      "salary_expectation": "high"
+    }
+  },
+  "recommendations": [
+    {
+      "id": "CAREER_R001",
+      "name": "Software Development - Product Companies",
+      "category": "Technical",
+      "priority": "High",
+      "baseCF": 0.9,
+      "finalCF": 0.98,
+      "rationale": "Strong technical foundation with proven coding ability and project experience. Meets requirements for product-based software companies.",
+      "actionSteps": [
+        "Practice Data Structures & Algorithms on LeetCode/HackerRank",
+        "Build 2-3 showcase projects for GitHub portfolio",
+        "Apply to product companies: Google, Microsoft, Amazon, etc.",
+        "Prepare for technical interviews (system design, coding rounds)"
+      ],
+      "expectedSalary": "High (8-20 LPA for freshers in product companies)",
+      "workLifeBalance": "Medium",
+      "jobSecurity": "High",
+      "boosts": [
+        {
+          "rule": "BOOST_R001",
+          "reason": "Multiple internships demonstrate practical experience and industry exposure.",
+          "value": 0.05
+        },
+        {
+          "rule": "BOOST_R004",
+          "reason": "Multiple certifications show continuous learning and skill development.",
+          "value": 0.03
+        }
+      ],
+      "rank": 1,
+      "confidencePercentage": "98.0%",
+      "explanation": {
+        "career": "Software Development - Product Companies",
+        "confidence": "98.0%",
+        "rank": 1,
+        "primaryFactors": [
+          "Excellent CGPA (8.5) meets high academic standards",
+          "Strong coding skills (9/10)",
+          "High analytical ability (8/10)"
+        ],
+        "supportingFactors": [
+          "High interest in coding/programming",
+          "Strong research interest",
+          "Completed 5 projects",
+          "2 internship experiences",
+          "1 publication(s)"
+        ],
+        "constraints": [],
+        "boosts": [
+          {
+            "rule": "BOOST_R001",
+            "reason": "Multiple internships demonstrate practical experience and industry exposure.",
+            "value": 0.05
+          },
+          {
+            "rule": "BOOST_R004",
+            "reason": "Multiple certifications show continuous learning and skill development.",
+            "value": 0.03
+          }
+        ],
+        "reasoning": "Strong technical foundation with proven coding ability and project experience. Meets requirements for product-based software companies.",
+        "nextSteps": [
+          "Practice Data Structures & Algorithms on LeetCode/HackerRank",
+          "Build 2-3 showcase projects for GitHub portfolio",
+          "Apply to product companies: Google, Microsoft, Amazon, etc.",
+          "Prepare for technical interviews (system design, coding rounds)"
+        ]
+      }
+    },
+    {
+      "id": "CAREER_R003",
+      "name": "Higher Studies (MS/MTech/PhD)",
+      "category": "Academic",
+      "priority": "High",
+      "baseCF": 0.97,
+      "finalCF": 0.98,
+      "rationale": "Excellent academic record with research aptitude. Strong foundation for graduate studies. MS/PhD opens doors to research roles, academia, and specialized technical positions.",
+      "actionSteps": [
+        "Prepare for GRE/GATE (depending on country preference)",
+        "Identify target universities and research labs",
+        "Work on research publications or thesis",
+        "Connect with professors for recommendation letters",
+        "Apply for scholarships and assistantships"
+      ],
+      "expectedSalary": "Varies (Stipend during studies, 12-25 LPA post-MS in industry)",
+      "workLifeBalance": "Low (during studies), High (post-PhD in academia)",
+      "jobSecurity": "Medium (depends on specialization)",
+      "boosts": [
+        {
+          "rule": "BOOST_R002",
+          "reason": "Publications strengthen research profile significantly for graduate admissions.",
+          "value": 0.08
+        },
+        {
+          "rule": "BOOST_R004",
+          "reason": "Multiple certifications show continuous learning and skill development.",
+          "value": 0.03
+        }
+      ],
+      "rank": 2,
+      "confidencePercentage": "98.0%",
+      "explanation": {
+        "career": "Higher Studies (MS/MTech/PhD)",
+        "confidence": "98.0%",
+        "rank": 2,
+        "primaryFactors": [
+          "Excellent CGPA (8.5) meets high academic standards",
+          "Strong coding skills (9/10)",
+          "High analytical ability (8/10)"
+        ],
+        "supportingFactors": [
+          "High interest in coding/programming",
+          "Strong research interest",
+          "Completed 5 projects",
+          "2 internship experiences",
+          "1 publication(s)"
+        ],
+        "constraints": [],
+        "boosts": [
+          {
+            "rule": "BOOST_R002",
+            "reason": "Publications strengthen research profile significantly for graduate admissions.",
+            "value": 0.08
+          },
+          {
+            "rule": "BOOST_R004",
+            "reason": "Multiple certifications show continuous learning and skill development.",
+            "value": 0.03
+          }
+        ],
+        "reasoning": "Excellent academic record with research aptitude. Strong foundation for graduate studies. MS/PhD opens doors to research roles, academia, and specialized technical positions.",
+        "nextSteps": [
+          "Prepare for GRE/GATE (depending on country preference)",
+          "Identify target universities and research labs",
+          "Work on research publications or thesis",
+          "Connect with professors for recommendation letters",
+          "Apply for scholarships and assistantships"
+        ]
+      }
+    },
+    {
+      "id": "CAREER_R004",
+      "name": "Data Science & Analytics",
+      "category": "Technical",
+      "priority": "High",
+      "baseCF": 0.93,
+      "finalCF": 0.98,
+      "rationale": "Strong analytical and coding skills align with data science requirements. High market demand for data professionals across industries.",
+      "actionSteps": [
+        "Learn Python, R, SQL for data analysis",
+        "Master ML libraries: Pandas, NumPy, Scikit-learn, TensorFlow",
+        "Build portfolio: Kaggle competitions, data projects on GitHub",
+        "Get certified: Google Data Analytics, IBM Data Science",
+        "Apply to: Analytics firms, tech companies, startups"
+      ],
+      "expectedSalary": "High (6-15 LPA for freshers with strong skills)",
+      "workLifeBalance": "Medium",
+      "jobSecurity": "High",
+      "boosts": [
+        {
+          "rule": "BOOST_R001",
+          "reason": "Multiple internships demonstrate practical experience and industry exposure.",
+          "value": 0.05
+        },
+        {
+          "rule": "BOOST_R004",
+          "reason": "Multiple certifications show continuous learning and skill development.",
+          "value": 0.03
+        }
+      ],
+      "rank": 3,
+      "confidencePercentage": "98.0%",
+      "explanation": {
+        "career": "Data Science & Analytics",
+        "confidence": "98.0%",
+        "rank": 3,
+        "primaryFactors": [
+          "Excellent CGPA (8.5) meets high academic standards",
+          "Strong coding skills (9/10)",
+          "High analytical ability (8/10)"
+        ],
+        "supportingFactors": [
+          "High interest in coding/programming",
+          "Strong research interest",
+          "Completed 5 projects",
+          "2 internship experiences",
+          "1 publication(s)"
+        ],
+        "constraints": [],
+        "boosts": [
+          {
+            "rule": "BOOST_R001",
+            "reason": "Multiple internships demonstrate practical experience and industry exposure.",
+            "value": 0.05
+          },
+          {
+            "rule": "BOOST_R004",
+            "reason": "Multiple certifications show continuous learning and skill development.",
+            "value": 0.03
+          }
+        ],
+        "reasoning": "Strong analytical and coding skills align with data science requirements. High market demand for data professionals across industries.",
+        "nextSteps": [
+          "Learn Python, R, SQL for data analysis",
+          "Master ML libraries: Pandas, NumPy, Scikit-learn, TensorFlow",
+          "Build portfolio: Kaggle competitions, data projects on GitHub",
+          "Get certified: Google Data Analytics, IBM Data Science",
+          "Apply to: Analytics firms, tech companies, startups"
+        ]
+      }
+    }
+  ],
+  "reasoning": {
+    "firedRules": [
+      "CAREER_R001",
+      "CAREER_R002",
+      "CAREER_R003",
+      "CAREER_R004",
+      "BOOST_R001",
+      "BOOST_R004",
+      "BOOST_R002"
+    ],
+    "totalRulesEvaluated": 30,
+    "executionTime": "3ms"
+  },
+  "trace": [
+    {
+      "source": "System",
+      "message": "Working memory initialized for student profile.",
+      "timestamp": "2026-04-02T10:02:19.273Z"
+    },
+    {
+      "source": "Profile",
+      "message": "CGPA: 8.5, Branch: Computer Science",
+      "timestamp": "2026-04-02T10:02:19.274Z"
+    },
+    {
+      "source": "Engine",
+      "message": "╔═══════════════════════════════════════════════════════════╗",
+      "timestamp": "2026-04-02T10:02:19.274Z"
+    },
+    {
+      "source": "Engine",
+      "message": "║   CAREER PATH RECOMMENDATION - INFERENCE ENGINE          ║",
+      "timestamp": "2026-04-02T10:02:19.274Z"
+    },
+    {
+      "source": "Engine",
+      "message": "║   Algorithm: Forward Chaining with Confidence Scoring    ║",
+      "timestamp": "2026-04-02T10:02:19.274Z"
+    },
+    {
+      "source": "Engine",
+      "message": "╚═══════════════════════════════════════════════════════════╝",
+      "timestamp": "2026-04-02T10:02:19.274Z"
+    },
+    {
+      "source": "Engine",
+      "message": "=== PHASE 1: Career Rule Matching (Forward Chaining) ===",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Career Rule",
+      "message": "✓ [CAREER_R001] FIRED → \"Software Development - Product Companies\" (Base CF: 0.90)",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Career Rule",
+      "message": "✓ [CAREER_R002] FIRED → \"Software Development - Service Companies\" (Base CF: 0.82)",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Boost",
+      "message": "[CAREER_R003] +0.05 boost applied",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Career Rule",
+      "message": "✓ [CAREER_R003] FIRED → \"Higher Studies (MS/MTech/PhD)\" (Base CF: 0.97)",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Boost",
+      "message": "[CAREER_R004] +0.05 boost applied",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Career Rule",
+      "message": "✓ [CAREER_R004] FIRED → \"Data Science & Analytics\" (Base CF: 0.93)",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Engine",
+      "message": "4 career path(s) matched initial criteria.",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Engine",
+      "message": "=== PHASE 2: Applying Constraint Rules ===",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Engine",
+      "message": "=== PHASE 3: Applying Boost Rules ===",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Boost Rule",
+      "message": "↑ [BOOST_R001] Applied to \"Software Development - Product Companies\" — Boost: +0.05 | Reason: Multiple internships demonstrate practical experience and industry exposure.",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Boost Rule",
+      "message": "↑ [BOOST_R004] Applied to \"Software Development - Product Companies\" — Boost: +0.03 | Reason: Multiple certifications show continuous learning and skill development.",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Boost Rule",
+      "message": "↑ [BOOST_R001] Applied to \"Software Development - Service Companies\" — Boost: +0.05 | Reason: Multiple internships demonstrate practical experience and industry exposure.",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Boost Rule",
+      "message": "↑ [BOOST_R004] Applied to \"Software Development - Service Companies\" — Boost: +0.03 | Reason: Multiple certifications show continuous learning and skill development.",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Boost Rule",
+      "message": "↑ [BOOST_R002] Applied to \"Higher Studies (MS/MTech/PhD)\" — Boost: +0.08 | Reason: Publications strengthen research profile significantly for graduate admissions.",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Boost Rule",
+      "message": "↑ [BOOST_R004] Applied to \"Higher Studies (MS/MTech/PhD)\" — Boost: +0.03 | Reason: Multiple certifications show continuous learning and skill development.",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Boost Rule",
+      "message": "↑ [BOOST_R001] Applied to \"Data Science & Analytics\" — Boost: +0.05 | Reason: Multiple internships demonstrate practical experience and industry exposure.",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Boost Rule",
+      "message": "↑ [BOOST_R004] Applied to \"Data Science & Analytics\" — Boost: +0.03 | Reason: Multiple certifications show continuous learning and skill development.",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Engine",
+      "message": "=== PHASE 4: Ranking Recommendations ===",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Ranking",
+      "message": "#1: Software Development - Product Companies — Confidence: 98.0% (Base: 90.0%)",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Ranking",
+      "message": "#2: Higher Studies (MS/MTech/PhD) — Confidence: 98.0% (Base: 97.0%)",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Ranking",
+      "message": "#3: Data Science & Analytics — Confidence: 98.0% (Base: 93.0%)",
+      "timestamp": "2026-04-02T10:02:19.275Z"
+    },
+    {
+      "source": "Engine",
+      "message": "✓ Inference complete in 3ms",
+      "timestamp": "2026-04-02T10:02:19.276Z"
+    },
+    {
+      "source": "Engine",
+      "message": "Recommendations: 3 career paths suggested",
+      "timestamp": "2026-04-02T10:02:19.276Z"
+    }
+  ]
+}
